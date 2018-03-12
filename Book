@@ -1,0 +1,5 @@
+public class Book extends Text {
+    public Book(String name, String author, int datePublished, int bookID, int dayRented, int dayReturned) {
+        super(name, author, datePublished, bookID, dayRented, dayReturned);
+    }
+}
