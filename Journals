@@ -1,0 +1,5 @@
+public class Journals extends Text {
+    public Journals(String name, String author, int datePublished, int bookID, int dayRented, int dayReturned) {
+        super(name, author, datePublished, bookID, dayRented, dayReturned);
+    }
+}
