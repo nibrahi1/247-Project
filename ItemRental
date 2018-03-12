@@ -1,0 +1,65 @@
+package Project_Test;
+import java.io.IOException;
+import java.util.Scanner;
+import java.io.IOException;
+
+public class ItemRental {
+
+    private String[] allRooms = new String[4];
+    private String[] openRooms = new String[3];
+    private String[] closedRooms = new String[1];
+
+    public void rentRoom(){
+        //Method to rent room(s)
+    }
+
+    public void returnRoom() {
+        //Method to return room(s)
+    }
+
+    public void addRoom() {
+        //Method to return room(s)
+    }
+
+    public void removeRoom() {
+        //Method to return room(s)
+    }
+
+    public int notTextRentalChoice() {
+        int rentRoomChoiceNum = 1;
+        int returnRoomChoiceNum = 2;
+        int addRoomChoiceNum = 3;
+        int removeRoomChoiceNum = 4;
+
+        System.out.println("Please select an option:");
+        System.out.println(rentRoomChoiceNum + ".) Rent a room.");
+        System.out.println(returnRoomChoiceNum".) Return a room.");
+        System.out.println("");
+        System.out.println("Admin Privileges:");
+        System.out.println(addRoomChoiceNum + ".) Add a room:");
+        System.out.println(removeRoomChoiceNum + ".) Remove a room:");
+        int choice = input.nextInt();
+        System.out.println("Your choice is: " + choice);
+
+        if (choice == rentRoomChoiceNum) {
+            rentRoom();
+        }
+        if (choice == returnRoomChoiceNum) {
+            returnRoom();
+        }
+        if (choice == rentRoomChoiceNum) {
+            addRoom();
+        }
+        if (choice == rentRoomChoiceNum) {
+            removeRoom();
+        }
+    }
+
+
+    public static void main(String args[]) {
+
+        Scanner input = new Scanner(System.in);
+
+}
+
+    }
