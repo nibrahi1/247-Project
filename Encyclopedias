@@ -1,0 +1,5 @@
+public class Encyclopedias extends Text {
+    public Encyclopedias(String name, String author, int datePublished, int bookID, int dayRented, int dayReturned) {
+        super(name, author, datePublished, bookID, dayRented, dayReturned);
+    }
+}
