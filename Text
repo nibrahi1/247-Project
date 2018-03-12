@@ -1,0 +1,83 @@
+public class Text {
+
+
+    private String name;
+    private String author;
+    private int datePublished;
+    private int bookID;
+    private int dayRented;
+    private int dayReturned;
+    private int edition;
+
+
+    public Text(String name, String author, int datePublished, int bookID, int dayRented, int dayReturned) {
+        this.name = name;
+        this.author = author;
+        this.datePublished = datePublished;
+        this.bookID = bookID;
+        this.dayRented = dayRented;
+        this.dayReturned = dayReturned;
+    }
+
+    public String getName() {
+        return name;
+
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAuthor() {
+        return author;
+
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public int getDatePublished() {
+        return datePublished;
+
+    }
+
+    public void setDatePublished(int datePublished) {
+        this.datePublished = datePublished;
+    }
+
+
+    public int getBookID() {
+        return bookID;
+
+    }
+
+    public void setBookID(int bookID) {
+        this.bookID = bookID;
+
+    }
+
+    public int getDayRented() {
+        return dayRented;
+    }
+
+    public void setDayRented(int dayRented) {
+        this.dayRented = dayRented;
+    }
+
+    public int getDayReturned() {
+        return dayReturned;
+    }
+
+    public void setDayReturned(int dayReturned) {
+        this.dayReturned = dayReturned;
+    }
+
+    public int getEdition() {
+        return edition;
+    }
+
+    public void setEdition(int edition) {
+        this.edition = edition;
+    }
+}
