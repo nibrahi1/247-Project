@@ -1,56 +1,167 @@
 package Project_Test;
 import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.io.IOException;
+import java.util.ArrayList;
 
 public class ItemRental {
 
-    private String[] allRooms = new String[4];
-    private String[] openRooms = new String[3];
-    private String[] closedRooms = new String[1];
+    ArrayList<Integer> openRooms = new ArrayList<Integer>(8);
+    //private int[] openRooms = new int[8];
+    private boolean[] openRoomsBool = new boolean[openRooms.size()];
+    private int[] reservedRooms = new int[2];
+    private int[] allRooms = new int[openRooms.size() + reservedRooms.length];
 
-    public void rentRoom(){
-        //Method to rent room(s)
+    //How many floors does our library have? Until we decide, I have 3.
+    int floorCount = 7;
+
+
+    //Methods containing the menu and process for RENTING rooms-------------------
+    public void reserveRoomMenu(){
+        System.out.println("Would you like to reserve a room?");
+        System.out.println("Select '0' for 'No', and Select '1' for 'Yes'");
+        Scanner reserveRoomMenuScanner = new Scanner(System.in);
+        int reserveRoomMenuInput = reserveRoomMenuScanner.nextInt();
+
+        if (reserveRoomMenuInput == 1){
+            reserveRoom();
+        } else {
+            notTextRentalMenu();
+        }
     }
 
+    public void reserveRoom() {
+        //Method to reserve room(s)
+
+        System.out.println("Open rooms:");
+        for (int i = 0; i < openRooms.size(); i++) {
+            System.out.println(openRooms.get(i));
+            System.out.println(openRoomsBool[i]);
+        }
+    }
+    //Methods containing the menu and process for RETURNING rooms-------------------
+    public void returnRoomMenu(){
+        System.out.println("Would you like to return a room?");
+        System.out.println("Select '0' for 'No', and Select '1' for 'Yes'");
+        Scanner returnRoomMenuScanner = new Scanner(System.in);
+        int returnRoomMenuInput = returnRoomMenuScanner.nextInt();
+
+        if (returnRoomMenuInput == 1){
+            returnRoom();
+        } else {
+            notTextRentalMenu();
+        }
+    }
     public void returnRoom() {
         //Method to return room(s)
     }
 
+    //Methods containing the menu and process for ADDING rooms-------------------
+    public void addRoomMenu(){
+        System.out.println("Would you like to add a room?");
+        System.out.println("Select '0' for 'No', and Select '1' for 'Yes'");
+        Scanner addRoomMenuScanner = new Scanner(System.in);
+        int addRoomMenuInput = addRoomMenuScanner.nextInt();
+
+        if (addRoomMenuInput == 1){
+            addRoom();
+        } else {
+            notTextRentalMenu();
+        }
+    }
+
     public void addRoom() {
-        //Method to return room(s)
+        boolean floorNotAdded = true;
+       // while(floorNotAdded) {
+            System.out.println("How many rooms would you like to add?");
+            Scanner newRoomCountScanner = new Scanner(System.in);
+            int newRoomCountInput = newRoomCountScanner.nextInt();
+
+            System.out.println("What is the number of the room you would like to add?");
+            Scanner newRoomInputScanner = new Scanner(System.in);
+
+            //String and Int of the inputted room number
+            String newRoomInputStr = newRoomInputScanner.nextLine();
+            int newRoomInputInt = Integer.parseInt(newRoomInputStr);
+
+            //conversions of the inputted room number String's first character to its own String then to Str
+            char firstDigitCh = newRoomInputStr.charAt(0);
+            //String firstDigitStr = String.valueOf(firstDigitCh);
+            int firstDigitInt = Character.getNumericValue(firstDigitCh);
+            System.out.println("firstDigit = " + firstDigitInt);
+
+            /*Next line tests that the first digit is an int, and can be manipulated as such
+                System.out.println("firstDigit = " + (firstDigitInt + 96) );*/
+
+            //Tests that inputted room number is no longer than 3 digits, the first digit of the inputted room number is less than our floor count
+            if (newRoomInputStr.length() == 3 || firstDigitInt > floorCount) {
+                System.out.println("Theoretically adds room: " + newRoomInputInt);
+            } else {
+                System.out.println("You have entered an incorrect value. Please enter a value");
+                System.out.println(" in a three-digit format, between '000' and '390'");
+                }
+            //The digits of the room number provided will be used to determine the position
+            // the new room will be added in the openRooms arrayList, to keep it organized
+
+            //int
+            //openRooms.add;
+       // }
+    }
+
+    //Methods containing the menu and process for REMOVING rooms-------------------
+    public void removeRoomMenu(){
+        System.out.println("Would you like to remove a room?");
+        System.out.println("Select '0' for 'No', and Select '1' for 'Yes'");
+        Scanner removeRoomMenuScanner = new Scanner(System.in);
+        int removeRoomMenuInput = removeRoomMenuScanner.nextInt();
+
+        if (removeRoomMenuInput == 1){
+            removeRoom();
+        } else {
+            notTextRentalMenu();
+        }
     }
 
     public void removeRoom() {
         //Method to return room(s)
     }
 
-    public int notTextRentalChoice() {
+    public void notTextRentalMenu() {
+        Scanner input = new Scanner(System.in);
         int rentRoomChoiceNum = 1;
         int returnRoomChoiceNum = 2;
         int addRoomChoiceNum = 3;
         int removeRoomChoiceNum = 4;
+        int notTextRentalMenuChoice = 0;
+
 
         System.out.println("Please select an option:");
         System.out.println(rentRoomChoiceNum + ".) Rent a room.");
-        System.out.println(returnRoomChoiceNum".) Return a room.");
+        System.out.println(returnRoomChoiceNum+ ".) Return a room.");
         System.out.println("");
         System.out.println("Admin Privileges:");
         System.out.println(addRoomChoiceNum + ".) Add a room:");
         System.out.println(removeRoomChoiceNum + ".) Remove a room:");
-        int choice = input.nextInt();
-        System.out.println("Your choice is: " + choice);
+        while(notTextRentalMenuChoice == 0){
+        try{
+            notTextRentalMenuChoice = input.nextInt();
+        } catch (InputMismatchException InMisExNotTextRentMenu) {
+            notTextRentalMenuChoice = 0;
 
-        if (choice == rentRoomChoiceNum) {
-            rentRoom();
         }
-        if (choice == returnRoomChoiceNum) {
+        }
+        System.out.println("Your choice is: " + notTextRentalMenuChoice);
+
+        if(notTextRentalMenuChoice == rentRoomChoiceNum) {
+            reserveRoomMenu();
+        }
+        if(notTextRentalMenuChoice == returnRoomChoiceNum) {
             returnRoom();
         }
-        if (choice == rentRoomChoiceNum) {
+        if(notTextRentalMenuChoice == addRoomChoiceNum) {
             addRoom();
         }
-        if (choice == rentRoomChoiceNum) {
+        if(notTextRentalMenuChoice == removeRoomChoiceNum) {
             removeRoom();
         }
     }
@@ -58,8 +169,10 @@ public class ItemRental {
 
     public static void main(String args[]) {
 
-        Scanner input = new Scanner(System.in);
+        ItemRental trial = new ItemRental();
 
-}
+        trial.notTextRentalMenu();
 
     }
+
+}
