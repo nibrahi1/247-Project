@@ -1,0 +1,28 @@
+import java.io.Serializable;
+
+public class Book implements Serializable {
+
+
+    private String title, author, returnDate, rentalDate;
+
+
+    public Book(){
+        author = null;
+        title = null;
+        returnDate = null;
+        rentalDate = null;
+
+    }
+
+    public Book(String returnDate, String title, String author, String rentalDate){
+        this.returnDate = returnDate;
+        this.title = title;
+        this.author = author;
+        this.rentalDate = rentalDate;
+    }
+
+    @Override
+    public  String toString(){
+        return "\nTitle: " + title + "\nAuthor: " + author + "\nReturn Date: " + returnDate + "\nRental Date: " + rentalDate + "\n";
+    }
+}
